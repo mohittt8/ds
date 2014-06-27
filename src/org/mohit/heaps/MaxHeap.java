@@ -1,6 +1,8 @@
 package org.mohit.heaps;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class MaxHeap<T> extends Heap<T> {
 
@@ -23,13 +25,21 @@ public class MaxHeap<T> extends Heap<T> {
 		}
 		return sb.toString();
 	}
-	
-	public T getMaximum(){
+
+	public T getMaximum() {
 		Node<T> max = heap.remove(0);
 		for (int index = (heap.size() - 1) / 2; index >= 0; index--) {
 			maxify(index);
 		}
 		return max.getElement();
+	}
+
+	public List<T> heapSort() {
+		List<T> list = new ArrayList<T>();
+		while (!heap.isEmpty()) {
+			list.add(getMaximum());
+		}
+		return list;
 	}
 
 }
